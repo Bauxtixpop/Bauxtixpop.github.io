@@ -1,21 +1,17 @@
-
 fetch('/layout/navbar.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('navbar').innerHTML = data;
 
+    const currentPage = window.location.pathname.split('/').pop();
 
-    const currentPage = window.location.pathname;
-
-    
     const linksMap = {
-      '/index.html': 'link-index',
-      '/public/tienda.html': 'link-tienda',
-      '/public/acerca_de.html': 'link-about',
-      '/public/ayuda.html': 'link-ayuda',
+      'index.html': 'link-index',
+      'tienda.html': 'link-tienda',
+      'acerca_de.html': 'link-about',
+      'ayuda.html': 'link-ayuda',
     };
 
-    
     const activeLink = linksMap[currentPage];
     if (activeLink) {
       const linkElement = document.getElementById(activeLink);
@@ -25,6 +21,7 @@ fetch('/layout/navbar.html')
     }
   })
   .catch(error => console.error('Error al cargar el navbar:', error));
+
 
   fetch('/layout/footer.html')
   .then(response => response.text())
