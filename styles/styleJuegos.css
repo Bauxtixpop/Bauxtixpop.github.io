@@ -1,0 +1,44 @@
+/*Boton de rating*/
+.rating-button {
+  margin-left: 85px; 
+  width: 280px;
+  height: 100px;
+  background-color: rgb(16, 16, 20); 
+  
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+.rating-image {
+  width: 50px;
+  height: 60px;
+}
+
+.rating-text h3 {
+  text-align: left;
+  margin: 0;
+  font-size: 17px;
+  color: white;
+}
+
+.rating-text p {
+  text-align: left;
+  margin: 0;
+  margin-top: 5px;
+  color: white;
+  font-size: 12px;
+}
+
+.rating-text hr {
+  border: 0;
+  height: 0.5px;
+  background-color: white;
+  margin: 8px 0;
+  width: 250%;
+}
+
+/*------------------------*/
