@@ -9,7 +9,7 @@ fetch('/layout/navbar.html')
 
     
     const linksMap = {
-      'index.html': 'link-index',
+      '/index.html': 'link-index',
       '/public/tienda.html': 'link-tienda',
       '/public/acerca_de.html': 'link-about',
       '/public/ayuda.html': 'link-ayuda',
