@@ -1,115 +1,83 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda - Infinity Games</title>
+<!-- SOLO contenido para SPA (sin navbar ni footer) -->
 
-    <!-- Estilos -->
-    <link rel="stylesheet" href="/styles/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
+<h1 class="text-white text-center mb-4">Tienda</h1>
 
-<body style="background: rgb(16, 16, 20);">
-    <!-- Navbar -->
-    <header>
-        <div id="navbar"></div>
-    </header>
-
-    <div class="espacio"></div>
-    <!-- Contenido Principal -->
-    <main>
-        <div class="container mt-5">
-            <h1 class="text-white text-center mb-4">Tienda</h1>
-
-            <!-- Sección de Juegos -->
-            <div class="row justify-content-center">
-                <!-- Juego 1 -->
-                <div class="col-md-4">
-                    <div class="game-card">
-                        <a href="/public/FC25.html">
-                            <div class="game-image" style="background-image: url('/imagenes/fifa.jpg');"></div>
-                            <h3 class="game-title">FC 25</h3>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Juego 2 -->
-                <div class="col-md-4">
-                    <div class="game-card">
-                        <a href="/public/Cuphead.html">
-                            <div class="game-image" style="background-image: url('/imagenes/zamn.jpg');"></div>
-                            <h3 class="game-title">Cuphead</h3>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Juego 3 -->
-                <div class="col-md-4">
-                    <div class="game-card">
-                        <a href="/public/aztec_project.html">
-                            <div class="game-image" style="background-image: url('/imagenes/aztec.jpg');"></div>
-                            <h3 class="game-title">Aztec Project</h3>
-                        </a>
-                    </div>
-                </div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <!-- Juego 1 -->
+        <div class="col-md-4">
+            <div class="game-card">
+                <a href="/public/FC25.html" data-link>
+                    <div class="game-image" style="background-image: url('/imagenes/fifa.jpg');"></div>
+                    <h3 class="game-title">FC 25</h3>
+                </a>
             </div>
         </div>
-    </main>
 
-    <!-- Footer -->
-    <div id="footer"></div>
+        <!-- Juego 2 -->
+        <div class="col-md-4">
+            <div class="game-card">
+                <a href="/public/CB.html" data-link>
+                    <div class="game-image" style="background-image: url('/imagenes/CBm.jpg');"></div>
+                    <h3 class="game-title">Champion's Brawl</h3>
+                </a>
+            </div>
+        </div>
 
-    <!-- Scripts -->
-    <script src="/scripts/Index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Juego 3 -->
+        <div class="col-md-4">
+            <div class="game-card">
+                <a href="/public/aztec_project.html" data-link>
+                    <div class="game-image" style="background-image: url('/imagenes/aztec.jpg');"></div>
+                    <h3 class="game-title">Aztec Project</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <style>
-        /* Estilos de la tienda */
-        .game-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+<style>
+    .game-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
 
-        .game-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
-        }
+    .game-card a{
+        text-decoration: none;
+        color: white;
+    }
 
-        .game-image {
-            width: 100%;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
+    .game-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+    }
 
-        .game-card:hover .game-image {
-            transform: scale(1.1);
-        }
+    .game-image {
+        width: 100%;
+        height: 250px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
 
-        .game-title {
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 15px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
-        }
+    .game-card:hover .game-image {
+        transform: scale(1.1);
+    }
 
-        .espacio{
-            margin-bottom: 40px;
-        }
-    </style>
-</body>
-</html>
+    .game-title {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 15px;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+        text-decoration: none;
+    }
+</style>
