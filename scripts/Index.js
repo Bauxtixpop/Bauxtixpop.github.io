@@ -1,3 +1,6 @@
+if (!window.location.hash) {
+    window.location.hash = '#/inicio';
+  }
 // Cargar navbar y footer una sola vez
 fetch('/layout/navbar.html')
   .then(r => r.text())
