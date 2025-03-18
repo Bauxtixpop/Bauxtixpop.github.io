@@ -43,6 +43,7 @@ fetch('/layout/footer.html')
           content.innerHTML = data;
           content.classList.remove('fade-out');
           runSearchListener();
+          runDownloadButton();
         });
     }, 400);
   }
@@ -85,7 +86,7 @@ fetch('/layout/footer.html')
     }
   });
   
-  // Buscador SPA (se mantiene igual)
+
   function runSearchListener() {
     const searchInput = document.getElementById("searchInput");
     const resultsContainer = document.getElementById("results");
@@ -129,3 +130,30 @@ fetch('/layout/footer.html')
       }
     });
   }
+
+  function runDownloadButton() {
+    const downloadBtn = document.getElementById("download-btn");
+    const modal = document.getElementById("download-modal");
+    const barra = document.getElementById("progress-bar");
+    const estado = document.getElementById("status");
+  
+    if (!downloadBtn) return;
+  
+    downloadBtn.addEventListener("click", () => {
+      modal.style.display = "block";
+      barra.style.width = "0%";
+      estado.innerText = "Iniciando descarga...";
+      let progreso = 0;
+  
+      const interval = setInterval(() => {
+        progreso += 10;
+        barra.style.width = progreso + "%";
+        estado.innerText = `Descargando... ${progreso}%`;
+        if (progreso >= 100) {
+          clearInterval(interval);
+          estado.innerText = "¡Descarga completa!";
+        }
+      }, 400);
+    });
+  }
+  
