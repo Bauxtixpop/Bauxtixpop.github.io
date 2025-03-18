@@ -4,9 +4,7 @@
   <main>
     <div class="container mt-5">
       <!-- Barra de búsqueda (responsiva) -->
-      <div
-        class="search-container d-flex justify-content-center justify-content-lg-end"
-      >
+      <div class="search-container d-flex justify-content-center justify-content-lg-end">
         <div class="input-group">
           <input
             type="text"
@@ -17,11 +15,12 @@
           <span class="search-icon">
             <i class="fas fa-search"></i>
           </span>
+  
+          <!-- Mueve aquí el div de resultados -->
+          <div id="results" class="results-container"></div>
         </div>
       </div>
-      <!-- Resultados (debajo del input) -->
-      <div id="results" class="results-container"></div>
-
+        
       <!-- Contenido del juego -->
       <div class="content-wrapper text-center text-md-start">
         <!-- Título y Rating -->
@@ -186,6 +185,83 @@
 
   <style>
 
+    /* Ajusta el contenedor que envuelve el input */
+  .search-container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /* El input-group será position: relative para que .results-container 
+     se posicione en relación a este bloque */
+  .input-group {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Ajusta a tu gusto */
+  }
+
+  /* El input en sí */
+  .search-input {
+    width: 100%;
+    padding: 12px 45px 12px 20px;
+    border-radius: 25px;
+    border: 1px solid rgba(180, 180, 180, 0.4);
+    background-color: rgba(20, 20, 20, 0.8);
+    color: #f0f0f0;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+  .search-input:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background-color: rgba(30, 30, 30, 0.85);
+  }
+
+  /* El ícono de búsqueda */
+  .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(230, 230, 230, 0.8);
+    font-size: 18px;
+  }
+
+  /* Contenedor de resultados: posición absoluta, justo debajo del input */
+  .results-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;               /* Para que aparezca encima de otros elementos */
+    width: 100%;                /* Ocupa todo el ancho del input-group */
+    background-color: rgb(0, 0, 0);
+    border-radius: 8px;
+    padding: 10px;
+    display: none;              /* Se muestra al buscar */
+    box-sizing: border-box;
+  }
+
+  .result-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    text-decoration: none;
+    color: #e5e5e5;
+    transition: all 0.3s ease;
+  }
+  .result-item:hover {
+    background: rgba(60, 60, 60, 0.6);
+    transform: translateX(10px);
+  }
+  .result-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    margin-right: 15px;
+    object-fit: cover;
+  }
+
 .carousel-control-prev,
 .carousel-control-next {
   width: auto; 
@@ -195,85 +271,7 @@
   transform: translateY(-35%);
 }
 
-    .espacio {
-      margin-bottom: 40px;
-    }
-
-    .search-container {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .results-container {
-      width: 50%;
-      margin-top: 10px;
-      margin-left: 560px;
-      background-color: rgba(255, 255, 255, 0.03);
-      border-radius: 8px;
-      padding: 10px;
-      display: none;
-    }
-
-    .input-group {
-      position: relative;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 12px 45px 12px 20px;
-      border-radius: 25px;
-      border: 1px solid rgba(180, 180, 180, 0.4); /* borde gris suave */
-      background-color: rgba(20, 20, 20, 0.8); /* fondo gris oscuro */
-      color: #f0f0f0;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      box-sizing: border-box;
-    }
-
-    .search-input:focus {
-      outline: none;
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      background-color: rgba(30, 30, 30, 0.85);
-    }
-
-    .search-input::placeholder {
-      color: rgba(200, 200, 200, 0.5); /* gris claro sin brillo */
-    }
-
-    .search-icon {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: rgba(230, 230, 230, 0.8); /* gris claro pero sin glow */
-      font-size: 18px;
-    }
-
-    .result-item {
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      transition: all 0.3s ease;
-      text-decoration: none;
-      color: #e5e5e5;
-    }
-
-    .result-item:hover {
-      background: rgba(60, 60, 60, 0.6);
-      transform: translateX(10px);
-    }
-
-    .result-item img {
-      width: 50px;
-      height: 50px;
-      border-radius: 10px;
-      margin-right: 15px;
-      object-fit: cover;
-    }
-
+    
     .carousel-media {
       width: 100%;
       height: 450px;

@@ -3,13 +3,34 @@ if (!window.location.hash) {
   }
   
   // Cargar navbar y footer una sola vez
-  fetch('/layout/navbar.html')
-    .then(r => r.text())
-    .then(data => document.getElementById('navbar').innerHTML = data);
-  
-  fetch('/layout/footer.html')
-    .then(r => r.text())
-    .then(data => document.getElementById('footer').innerHTML = data);
+fetch('/layout/navbar.html')
+.then(r => r.text())
+.then(data => {
+  document.getElementById('navbar').innerHTML = data;
+
+  // Una vez insertado el navbar, adjunta el listener a los enlaces de navegación
+  const navLinks = document.querySelectorAll('#navbar .nav-link');
+  const navbarCollapse = document.getElementById('navbarNav');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      // Si el menú colapsado está abierto (tiene la clase "show"), ciérralo
+      if (navbarCollapse.classList.contains('show')) {
+        // Intenta obtener la instancia existente
+        let collapseInstance = bootstrap.Collapse.getInstance(navbarCollapse);
+        if (collapseInstance) {
+          collapseInstance.hide();
+        } else {
+          new bootstrap.Collapse(navbarCollapse, { toggle: false }).hide();
+        }
+      }
+    });
+  });
+});
+
+fetch('/layout/footer.html')
+.then(r => r.text())
+.then(data => document.getElementById('footer').innerHTML = data);
   
   // SPA Router: Función para cargar secciones con transición
   function loadSection(url) {
@@ -108,4 +129,3 @@ if (!window.location.hash) {
       }
     });
   }
-  

@@ -3,25 +3,23 @@
   <!-- Contenido Principal -->
   <main>
     <div class="container mt-5">
-      <!-- Barra de búsqueda (responsiva) -->
-      <div
-        class="search-container d-flex justify-content-center justify-content-lg-end"
-      >
-        <div class="input-group">
-          <input
-            type="text"
-            id="searchInput"
-            class="form-control search-input"
-            placeholder="Buscar juego..."
-          />
-          <span class="search-icon">
-            <i class="fas fa-search"></i>
-          </span>
-        </div>
-      </div>
-      <!-- Resultados (debajo del input) -->
-      <div id="results" class="results-container"></div>
+       <!-- Barra de búsqueda (responsiva) -->
+    <div class="search-container d-flex justify-content-center justify-content-lg-end">
+      <div class="input-group">
+        <input
+          type="text"
+          id="searchInput"
+          class="form-control search-input"
+          placeholder="Buscar juego..."
+        />
+        <span class="search-icon">
+          <i class="fas fa-search"></i>
+        </span>
 
+        <!-- Mueve aquí el div de resultados -->
+        <div id="results" class="results-container"></div>
+      </div>
+    </div>
       <!-- Contenido del juego -->
       <div class="content-wrapper text-center text-md-start">
         <!-- Título y Rating -->
@@ -182,151 +180,151 @@
       </div>
     </div>
   </main>
+<style>
 
-
-  <style>
-    .carousel-control-prev,
-.carousel-control-next {
-  width: auto; 
-  height: 30px; 
-  padding: 10px; 
-  top: 40%;
-  transform: translateY(-35%);
+  /* Ajusta el contenedor que envuelve el input */
+.search-container {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
+/* El input-group será position: relative para que .results-container 
+   se posicione en relación a este bloque */
+.input-group {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* Ajusta a tu gusto */
+}
 
-    .search-container {
-      width: 100%;
-      margin-bottom: 20px;
-    }
+/* El input en sí */
+.search-input {
+  width: 100%;
+  padding: 12px 45px 12px 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(180, 180, 180, 0.4);
+  background-color: rgba(20, 20, 20, 0.8);
+  color: #f0f0f0;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+.search-input:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background-color: rgba(30, 30, 30, 0.85);
+}
 
-    .results-container {
-      width: 50%;
-      margin-top: 10px;
-      margin-left: 560px;
-      background-color: rgba(255, 255, 255, 0.03);
-      border-radius: 8px;
-      padding: 10px;
-      display: none;
-    }
+/* El ícono de búsqueda */
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(230, 230, 230, 0.8);
+  font-size: 18px;
+}
 
-    .input-group {
-      position: relative;
-      width: 100%;
-      max-width: 400px;
-    }
+/* Contenedor de resultados: posición absoluta, justo debajo del input */
+.results-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;               /* Para que aparezca encima de otros elementos */
+  width: 100%;                /* Ocupa todo el ancho del input-group */
+  background-color: rgb(0, 0, 0);
+  border-radius: 8px;
+  padding: 10px;
+  display: none;              /* Se muestra al buscar */
+  box-sizing: border-box;
+}
 
-    .search-input {
-      width: 100%;
-      padding: 12px 45px 12px 20px;
-      border-radius: 25px;
-      border: 1px solid rgba(180, 180, 180, 0.4); /* borde gris suave */
-      background-color: rgba(20, 20, 20, 0.8); /* fondo gris oscuro */
-      color: #f0f0f0;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      box-sizing: border-box;
-    }
+.result-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  text-decoration: none;
+  color: #e5e5e5;
+  transition: all 0.3s ease;
+}
+.result-item:hover {
+  background: rgba(60, 60, 60, 0.6);
+  transform: translateX(10px);
+}
+.result-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  margin-right: 15px;
+  object-fit: cover;
+}
 
-    .search-input:focus {
-      outline: none;
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      background-color: rgba(30, 30, 30, 0.85);
-    }
+.carousel-control-prev,
+.carousel-control-next {
+width: auto; 
+height: 30px; 
+padding: 10px; 
+top: 40%;
+transform: translateY(-35%);
+}
 
-    .search-input::placeholder {
-      color: rgba(200, 200, 200, 0.5); /* gris claro sin brillo */
-    }
+  
+  .carousel-media {
+    width: 100%;
+    height: 450px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
 
-    .search-icon {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: rgba(230, 230, 230, 0.8); /* gris claro pero sin glow */
-      font-size: 18px;
-    }
+  .carousel-thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
 
-    .result-item {
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      transition: all 0.3s ease;
-      text-decoration: none;
-      color: #e5e5e5;
-    }
+  .thumbnail {
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    margin: 0 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
 
-    .result-item:hover {
-      background: rgba(60, 60, 60, 0.6);
-      transform: translateX(10px);
-    }
+  .thumbnail:hover,
+  .thumbnail.active {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 
-    .result-item img {
-      width: 50px;
-      height: 50px;
-      border-radius: 10px;
-      margin-right: 15px;
-      object-fit: cover;
-    }
+  .game-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: 40px;
+    color: orange;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
 
-    .carousel-media {
-      width: 100%;
-      height: 450px;
-      border-radius: 12px;
-      object-fit: cover;
-    }
+  .info-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+  }
 
-    .carousel-thumbnails {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
+  .btn-download {
+    background:linear-gradient(45deg, #ffcc00, #ff6600);
+    color: #111;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+  }
 
-    .thumbnail {
-      width: 80px;
-      height: 50px;
-      object-fit: cover;
-      margin: 0 5px;
-      border-radius: 8px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .thumbnail:hover,
-    .thumbnail.active {
-      opacity: 1;
-      transform: scale(1.1);
-    }
-
-    .game-title {
-      font-family: "Orbitron", sans-serif;
-      font-size: 40px;
-      color: orange;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .info-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(8px);
-      border-radius: 12px;
-    }
-
-    .btn-download {
-      background:linear-gradient(45deg, #ffcc00, #ff6600);
-      color: #111;
-      padding: 12px 20px;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .btn-download:hover {
-      transform: scale(1.1);
-      background:linear-gradient(45deg, #ff6600, #ffcc00);
-      color: #111;
-    }
+  .btn-download:hover {
+    transform: scale(1.1);
+    background:linear-gradient(45deg, #ff6600, #ffcc00);
+    color:#111;
+  }
 </style>
-
